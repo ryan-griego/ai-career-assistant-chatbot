@@ -145,7 +145,7 @@ ehthumbs.db
 Thumbs.db
 
 # Project specific
-*.pdf
+# *.pdf  # Commented out to allow PDFs for Hugging Face deployment
 !requirements.txt
 !README.md
 !pyproject.toml
