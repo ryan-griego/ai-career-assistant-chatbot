@@ -1,3 +1,9 @@
+---
+title: ai_career_assistant_chatbot
+app_file: career_chatbot.py
+sdk: gradio
+sdk_version: 5.49.1
+---
 # AI Career Assistant
 
 An AI-powered career assistant that represents professionals on their websites, answering questions about their background while facilitating follow-up contact for qualified opportunities. Built with a template-based architecture using OpenAI's latest structured output features and a simple prompt management system.
