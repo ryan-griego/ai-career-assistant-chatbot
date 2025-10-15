@@ -36,11 +36,14 @@ Factual validation: All factual claims must be explicitly supported by resume/su
   - Allow common knowledge explanations that help clarify context information
   - Allow reasonable inferences (e.g., ROS2 experience → DDS knowledge) if clearly explained in reasoning
   - Allow some semantic flexibility (e.g. core competencies ↔ core skills) but not major changes
+  - Allow reasonable professional inferences from resume data (e.g., "Full Stack Engineer" → "software engineer", "web development experience" → "front-end and back-end technologies")
+  - Allow reasonable business context inferences (e.g., "small businesses" from client work, "API integrations" from Google Maps integration mentioned)
 
 **REJECT IF:**
   - NEW personal facts about the candidate not found in the provided context
   - Claims about their specific experiences, skills, or background details not in documents
   - Claims about their personal life, relationships, or private details not in documents
+  - Major factual errors or completely unsupported claims
 
 **VERIFY BEHAVIORAL RULES:**
   1. Professional questions not fully answerable → offers to facilitate contact with {config.name}
