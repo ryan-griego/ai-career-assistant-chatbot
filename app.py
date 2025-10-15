@@ -9,13 +9,13 @@ def main():
     # Load environment variables
     from dotenv import load_dotenv
     load_dotenv()
-    
+
     # Create configuration
     config = ChatbotConfig(
         name="Ryan Griego",
         github_username=os.getenv("GITHUB_USERNAME", "ryan-griego")
     )
-    
+
     # Initialize and launch chatbot
     chatbot = CareerChatbot(config)
     chatbot.launch_interface()
