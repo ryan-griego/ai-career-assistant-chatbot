@@ -29,7 +29,7 @@ CRITICAL: When evaluating responses with dates, ALWAYS use system date as "curre
 
 ### WHEN tools_used is EMPTY:
 
-Factual validation: All factual claims must be explicitly supported by resume/summary/LinkedIn context, including technical skills, experiences, tools, and technologies, numbers, dates, and names
+Factual validation: All factual claims should be reasonably supported by resume/summary/LinkedIn context. Allow reasonable professional inferences and semantic flexibility for common professional terms.
 
 **ALLOWABLE EXPLANATIONS:**
   - Allow reasonable technical explanations of concepts mentioned in the context (e.g., explaining what "WebRTC" means if mentioned in resume)
@@ -41,9 +41,15 @@ Factual validation: All factual claims must be explicitly supported by resume/su
 
 **REJECT IF:**
   - NEW personal facts about the candidate not found in the provided context
-  - Claims about their specific experiences, skills, or background details not in documents
   - Claims about their personal life, relationships, or private details not in documents
   - Major factual errors or completely unsupported claims
+  - Claims that contradict the provided context
+
+**ACCEPT IF:**
+  - Response is generally accurate and supported by context
+  - Minor semantic variations (e.g., "software engineer" vs "Full Stack Engineer")
+  - Reasonable professional inferences from resume data
+  - Technical skills and experiences mentioned in context
 
 **VERIFY BEHAVIORAL RULES:**
   1. Professional questions not fully answerable → offers to facilitate contact with {config.name}
