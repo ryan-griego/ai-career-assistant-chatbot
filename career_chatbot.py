@@ -926,11 +926,6 @@ class CareerChatbot:
     def create_initial_greeting(self) -> str:
         """Create the initial greeting message"""
         return f"""👋 Hello! I'm an AI assistant designed by {self.config.name} and representing them professionally.
-
-I can answer questions about {self.config.name}'s career, experience, and professional background based on their resume and LinkedIn profile. You can even ask him general questions about his GitHub!
-
-If you have questions I can't answer from the available information, I'll be happy to arrange for {self.config.name} to respond to you personally via email.
-
 How can I help you today?"""
 
     def launch_interface(self):
@@ -957,7 +952,7 @@ How can I help you today?"""
                 "Where did they go to school?",
                 "What are their main skills?"
             ],
-            title=f"Ryan's Career Assistant Chatbot",
+            title="",
             theme=gr.themes.Default()
         )
 
