@@ -10,6 +10,7 @@ class ChatbotConfig:
     resume_path: str = "me/resume.pdf"
     linkedin_path: str = "me/linkedin.pdf"
     summary_path: str = "me/summary.txt"
+    career_qa_path: str = "me/career_qa.txt"
     model: str = "gpt-4o-mini-2024-07-18"  # Primary chat model
     evaluator_model: str = "gpt-4o-mini-2024-07-18"  # Evaluation model (using same OpenAI model)
     job_matching_model: str = "gpt-4o-2024-08-06"  # Model for job matching analysis

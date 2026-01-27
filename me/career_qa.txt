@@ -1,0 +1,218 @@
+What's your approach in learning and keeping up with the fast changing JavaScript stacks (React.js, Node.js, etc.)?
+
+My approach in learning Javascript stacks includes reading through the documentation in blocked out time slots during the week. I learn best by doing so I’ll come up with a small app idea to get me into the code editor/terminal. There are a number of online course and lessons I will go through when I’m seeking to learn how something works.
+
+I’ve been using ChatGPT as an educational tool to help me understand what concepts are need for a particular project. It also helps reeducate me on certain things I may have missed in the documentation.
+
+_
+
+What app project you worked on recently with your Full Stack experience? Please describe what the app is about, what's the tech stack and your role in building it?
+
+
+A full stack application that I’m currently working on is a client management system for those that run web design companies. The goal of the project is to help the business owner log and communicate with potential and existing clients.
+
+The app is built with Next.js, TypeScript and uses Postgres to manage contact and user data. I’m also using Auth0 to manage the user authentication.
+
+I will be implementing automated deployments and testing with Jest and Gitlab. I will also be implementing the SendGrid api to enable the user to send customized HTML emails to contacts. There will also be a new database table added called activity log to log all the user’s updates to contact fields.
+
+I’m building the app in its entirety and will be responsible for deploying it to AWS using docker containers.
+
+-
+
+Tell Us About Your Greatest Failure in a Professional Context
+
+
+One of my greatest failures occurred early in my career when I was responsible for sending out a promotional email blast in a previous role. My role included preparing the email content, uploading the recipient list, and ensuring the campaign launched smoothly. However, I made the critical mistake of not double-checking the recipient list before sending the email.
+As a result, the email was sent to far more recipients than intended. The unexpected traffic overwhelmed the website, causing it to crash shortly after the emails went out. This not only impacted the campaign but also created frustration for users and the company.
+
+Once I realized the issue, I immediately took responsibility and collaborated with the original developer of the website to bring it back online. Together, we worked under tight pressure to optimize the server and stabilize the site as quickly as possible.
+
+While the site was being restored, I communicated with my boss to ensure transparency about the issue and the steps we were taking to resolve it. This was a difficult moment, but it taught me the importance of owning mistakes and maintaining clear communication during a crisis.
+
+-
+
+What's your approach in learning and keeping up with the fast changing JavaScript stacks (React.js, Node.js, etc.)?
+
+My approach in learning Javascript stacks includes reading through the documentation in blocked out time slots during the week. I learn best by doing so I’ll come up with a small app idea to get me into the code editor/terminal. There are a number of online course and lessons I will go through when I’m seeking to learn how something works.
+
+I’ve been using ChatGPT as an educational tool to help me understand what concepts are need for a particular project. It also helps reeducate me on certain things I may have missed in the documentation.
+
+-
+
+What app project you worked on recently with your Full Stack experience? Please describe what the app is about, what's the tech stack and your role in building it?
+
+
+A full stack application that I’m currently working on is a client management system for those that run web design companies. The goal of the project is to help the business owner log and communicate with potential and existing clients.
+
+The app is built with Next.js, TypeScript and uses Postgres to manage contact and user data. I’m also using Auth0 to manage the user authentication.
+
+I will be implementing automated deployments and testing with Jest and Gitlab. I will also be implementing the SendGrid api to enable the user to send customized HTML emails to contacts. There will also be a new database table added called activity log to log all the user’s updates to contact fields.
+
+I’m building the app in its entirety and will be responsible for deploying it to AWS using docker containers.
+
+-
+
+Tell Us About Your Greatest Failure in a Professional Context
+
+
+One of my greatest failures occurred early in my career when I was responsible for sending out a promotional email blast in a previous role. My role included preparing the email content, uploading the recipient list, and ensuring the campaign launched smoothly. However, I made the critical mistake of not double-checking the recipient list before sending the email.
+As a result, the email was sent to far more recipients than intended. The unexpected traffic overwhelmed the website, causing it to crash shortly after the emails went out. This not only impacted the campaign but also created frustration for users and the company.
+
+Once I realized the issue, I immediately took responsibility and collaborated with the original developer of the website to bring it back online. Together, we worked under tight pressure to optimize the server and stabilize the site as quickly as possible.
+
+While the site was being restored, I communicated with my boss to ensure transparency about the issue and the steps we were taking to resolve it. This was a difficult moment, but it taught me the importance of owning mistakes and maintaining clear communication during a crisis.
+
+-
+
+What's your approach in learning and keeping up with the fast changing JavaScript stacks (React.js, Node.js, etc.)?
+
+My approach in learning Javascript stacks includes reading through the documentation in blocked out time slots during the week. I learn best by doing so I’ll come up with a small app idea to get me into the code editor/terminal. There are a number of online course and lessons I will go through when I’m seeking to learn how something works.
+
+I’ve been using ChatGPT as an educational tool to help me understand what concepts are need for a particular project. It also helps reeducate me on certain things I may have missed in the documentation.
+
+-
+
+What app project you worked on recently with your Full Stack experience? Please describe what the app is about, what's the tech stack and your role in building it?
+
+
+A full stack application that I’m currently working on is a client management system for those that run web design companies. The goal of the project is to help the business owner log and communicate with potential and existing clients.
+
+The app is built with Next.js, TypeScript and uses Postgres to manage contact and user data. I’m also using Auth0 to manage the user authentication.
+
+I will be implementing automated deployments and testing with Jest and Gitlab. I will also be implementing the SendGrid api to enable the user to send customized HTML emails to contacts. There will also be a new database table added called activity log to log all the user’s updates to contact fields.
+
+I’m building the app in its entirety and will be responsible for deploying it to AWS using docker containers.
+
+-
+
+What is the most interesting technical problem you have solved? What made it interesting and what specifically did you do to solve it?
+
+I was able to greatly reduce my company’s outgoing costs of storing and retrieving call data by writing an automated PHP script that moved phone call audio files from the 3rd party provider’s servers to our S3 bucket. I also ran each audio file through a converter from .wav to .mp3 so we could scrub through the phone call in the app. By doing this, I was able to build a full-stack internal call log reporting app so call center managers could have much greater transparency into the conversations our call center staff was having with our patients.
+
+What made it interesting was that it helped trained my mind to look for ways to using my problem solving ability and vision to look out for opportunities rely less on expensive third-party services by building a system designed to bring valuable aspects of a service into our own platform.
+
+Describe your experience with JavaScript, TypeScript and SCSS
+
+With JavaScript, I’ve developed a number of applications using vanilla Javascript and frameworks such as React and Vue. At LifeMD, as an Associate Full Stack Engineer, I used JavaScript alongside Vue.js to optimize user interfaces and back-end processes. For example, I built a call monitoring system featuring data tables and audio playback. My work on personal projects like "Job Getter" further showcases my JavaScript expertise, where I implemented DOM manipulation and fetch requests with Nuxt 3 to create a job search optimization platform.
+
+TypeScript has been a critical part of my recent work, bringing type safety and scalability to my JavaScript-based projects. In one my most recent software projects, Patient Appointment Booking, I utilized TypeScript with Next.js to develop a full-stack application that streamlines patient registration and scheduling. By enforcing strict typing, I ensured robust code quality while integrating APIs like Twilio and SendGrid for enhanced functionality. My mastery of TypeScript, as noted in my technical skills, allows me to write maintainable and error-resistant code, which has been particularly valuable in collaborative, fast-paced settings where reliability is paramount.
+
+I’ve used a variety of CSS frameworks including SCSS. In my project Job Getter, a job tracking application, I used SCSS along with Tailwind CSS to define CSS styles for the design of the main and job page.
+
+-
+
+Describe your experience using or contributing to open source software *
+
+
+Throughout my career as a web developer, I have extensively utilized open source software to build  applications. My experience spans a variety of open source frameworks, libraries, and tools across front-end, back-end, and full-stack development.
+
+For instance, in my role as an Associate Full Stack Engineer at LifeMD, I leveraged open source technologies like Vue.js and MySQL to optimize user interfaces and back-end processes. I integrated Vue.js with Vuetify to revamp the user interface of internal applications, using reusable components to boost performance.
+
+I also used TCPDF, an open source PHP library, to create a PDF generator that streamlined prescription generation by converting HTML into downloadable PDFs—showcasing how I’ve adapted open source tools to solve real-world problems.
+
+In my current role as developer at Lake Forest Web Designs, I’ve relied on open source solutions like Docker to deploy and manage containerized applications for projects, ensuring fast and reliable launches. My work with WordPress for small business websites further emphasizes my experience with open source platforms.
+
+My personal projects also reflect my deep engagement with open source software. For example, in developing "Patient Appointment Booking," I utilized Appwrite, an open source backend-as-a-service platform, to provide REST APIs and a robust infrastructure for a full-stack application built with Next.js, TypeScript, and Tailwind CSS. Similarly, in "Chat RRG," I worked with MongoDB, an open source NoSQL database, to store user conversation histories while optimizing for data integrity and privacy.
+
+While I haven’t directly contributed to open source repositories as part of my professional roles, I actively engage with the open source community by staying current with updates, exploring documentation, and applying these tools.
+
+-
+
+Describe a project where you implemented a complex feature using Vue.js, Angular, or React. What was the feature, and how did you ensure it met the user’s requirements?[/b] *
+
+For one of my side projects listed in my resume, I implemented a cure QR code generator that would link to a landing page that contained URL parameters that would personalize the landing page based on the company, the position name, and the hiring contacts name. Currently on the only user, but I made sure it met the requirements by attempting to break it in any way possible. Once I was unable to break the functionality, I pushed those changes live.
+
+[b]Explain a time when you encountered a challenging technical issue in a frontend application? How did you identify the problem, and what steps did you take to resolve it?[/b] *
+
+When I was deployed, my ChatGPT clone live I noticed there was an issue with the first response from the LLM.  A bug kept occurring where the first response from the LLM would disappear, and not get added to the database. I first attempted to identify the problem by logging out the response to the console to see what it looked like. I've been looked at the mongo DB database admin to see if these responses were being entered.  Once I figured that they weren't being entered I went into the send message and point and logged out the response from there. I saw that I was only taking into account existing chat ID, and it would work for existing message chains.
+
+I finally found out that I was not capturing the value of the new Chat ID when the endpoint was hit and so it ended up not getting to the point where it would add a new document to the collection.
+
+
+How have you leveraged AWS or other cloud services to improve the scalability and performance of an application you developed? What specific tools or services did you use?[/b] *
+
+I'm currently in the process of migrating my existing live applications from AWS to digital ocean. The reason for this is I found that digital oceans droplet service would save me about 80% in hosting fees each month to make sure I could use a low cost droplet service I learned, and I'm currently dockerizing apps, so they can work in a tighter environment and still be fast and effective.
+
+[b]Give an example of how you ensured code quality and maintainability during a project. What practices or tools did you use, and how did they impact the project’s success?[/b] *
+
+I built out a prototype of my job tracking application tool using Nuxt. When I began noticing that I was rewriting the same lines of code and using mulltiple endpoints for an overal update function, I began to go through each file and see how I could consolidate these endpoints so they would run through conditionals instead of hitting new files.
+
+-
+
+Can you share a situation where you had to collaborate with other developers or cross-functional teams? How did you handle differing opinions or approaches, and what was the outcome?
+
+At LifeMD, I worked closely with another developer on internal reports, typically deferring to his approach when identifying and fixing bugs. However, there were occasions when I proposed alternative solutions to improve the report’s efficiency or usability. In these cases, I’d share my reasoning and back it up with data or examples, and he’d offer feedback based on his experience. We found a good balance by listening to each other's perspectives, which led to smoother workflows and even a few implemented optimizations. The outcome was a set of reports that not only performed better but also enhanced my technical appro
+
+-
+
+Please give a brief explanation of your full stack development
+
+
+I've spent most of my time developing for the LEMP stack. My first experiences of doing full stack developement happened at a coding bootcamp. At the bootcamp, I learned to use React, Express.js and SQL to build a full stack project and deploy it to our AWS EC2 servers.
+
+Upon graduating from LearningFuze (coding bootcamp) I accepted a position at LifeMD. At LifeMD, I learned PHP on the job and wrote performant MySQL queries to build out reports and features for our internal management application.
+
+Here are a list of programming languages I use:
+Javascript
+PHP
+TypeScript
+Node.js
+Vue
+HTML
+CSS
+
+-
+
+Do you have experience working in a fast-paced work environment? If so, please share a brief summary of this experience.
+
+
+Yes, one of my experiences working in a fast-paced environment was when I was working to revamp the company’s branded promotional and transactional emails at LifeMD. After adding a new brand to our collection, I had to coordinate with the brand manager and the director of email marketing to ensure that new HTML emails would be ready in time for the launching of the new brands website.
+
+-
+
+Can you share a time when you've helped someone recently, big or small?
+
+
+Yes. My roommate who I had recommended to the same coding bootcamp that I went to came up to me the other day saying that he had been working on a issue for 4 hours and was stuck. He was working on a side project and was having trouble getting his MongoDB instance after it was deployed to his live server. I was able to give him the right tip (check if the IP of the web server has been whitelisted by MongoDB) and he was able to fix the problem.
+
+As someone who’s had a mentor, I hope to give that same thing back to junior developers.
+
+-
+
+experience do you have with full-stack technologies? Please specify the programming languages you use for the front-end and back-end (e.g., JavaScript, Node.js, Java, or similar)  *
+
+I have experience working with full-stack technologies, primarily focusing on React, Express.js, Vue, PHP, and Node.js, with a recent shift toward TypeScript. My journey started at the LearningFuze full-stack bootcamp, where I built a strong foundation through hands-on projects. Since then, I’ve worked on various side projects and gained professional experience at a telehealth company, where I handled both frontend development with Vue and backend development using PHP.
+
+-
+
+What is your most impressive work accomplishment?
+
+I was able to greatly reduce my company’s outgoing costs of storing and retrieving call data by writing an automated PHP script that moved call audio files from the 3rd party provider’s servers to our S3 bucket. By doing this, I was able to build a full-stack internal call log reporting app so call center managers could have much greater transparency into the conversations our call center staff was having with our patients.
+
+-
+
+Present or most recent employer and reason for leaving:*
+
+I took a career sabbatical to deepen my overall technical knowledge and work on personal projects. During this time, I learned Next.js and Mongo DB. I also learned how to integrate AI into my web apps. This period allowed me to refine my full-stack development skills and stay up to date with industry trends, preparing me for my next professional opportunity.
+
+-
+
+Describe your experience with version control systems like Git.
+
+I’ve used Git for over 5 years to manage my code and collaborate on projects both on the job and on side projects. My experienceGit has been key for tracking changes, especially on front-end work where I’m testing changes to an applications design and functionality. I’m comfortable using git regularly and use it to roll back mistakes or test new features without breaking the main codebase.
+
+-
+
+How do you ensure that your code is clean, maintainable, and scalable?
+
+I make sure my code is clean, maintainable, and scalable by following a few key habits. I start with clear naming conventions and consistent formatting. I also write comments on code to help explain what it’s doing. Anyone picking up my code can understand it fast. I break things into reusable pieces, like modular functions or components, which makes it easier to update laters. For scaling a product, I think ahead about how a project might grow, like planning for more users or features, and test as I go to catch issues early. As I build my back-end skills, I’m applying these same principles to server-side work, ensuring everything I write is solid.
+
+-
+
+Describe your experience with database management systems, such as SQL and NoSQL databases.
+
+I’ve worked with both SQL and NoSQL database management systems, including MariaDB, MySQL, and MongoDB, to handle data in my projects. With MariaDB and MySQL, I’ve managed structured data, like user profiles and product info, using queries to store, retrieve, and update information. For example, I’ve paired them with PHP on the back-end to power dynamic features, like pulling data for a front-end built with JavaScript and Vue.
+
+MongoDB, a NoSQL database, has been great for more flexible, unstructured data—like JSON-style documents for a chatbot I built with the Open AI API—since it lets me work with it without rigid schemas.
+
+-
