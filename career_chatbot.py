@@ -30,6 +30,10 @@ from models import (
     JobMatchResult,
 )
 
+# Import blog and cache systems
+from models.blog_manager import BlogManager
+from models.semantic_cache import SemanticCache
+
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -623,10 +627,10 @@ class ToolRegistry:
                 "name": "search_github_repos",
                 "strict": True,
                 "description": (
-                    "Use this tool when users ask about GitHub activity, repositories, open source work, "
-                    "programming projects, or technical skills. This tool searches GitHub repositories for the configured user. "
-                    "Call WITHOUT parameters to get all repositories, then analyze the returned data. "
-                    "Use this for questions like 'What projects does this person have?' or 'Show me their GitHub work'."
+                    "Use this tool ONLY when users specifically ask about GitHub repositories or open source contributions. "
+                    "DO NOT use this for questions about blog posts, articles, or writing - that information is in the context. "
+                    "DO NOT use this for general project questions - check resume and blog articles first. "
+                    "This tool searches GitHub repositories. Call WITHOUT parameters to get all repositories."
                 ),
                 "parameters": {
                     "type": "object",
@@ -765,6 +769,25 @@ class CareerChatbot:
         self.web_search_service = WebSearchService(github_username=config.github_username) if config.github_username else None
         self.document_loader = DocumentLoader()
 
+        # Initialize blog manager
+        self.blog_manager = BlogManager(
+            storage_path="data/blog_articles.json",
+            blog_url="https://ryangriego.com/blog"
+        )
+
+        # Check for blog updates on startup
+        logger.info("Checking for blog updates...")
+        self.blog_manager.update_articles()
+
+        # Initialize semantic cache
+        self.semantic_cache = SemanticCache(
+            db_path="data/semantic_cache.db",
+            similarity_threshold=0.92,  # 92% similarity required for cache hit
+            cache_ttl_days=30,           # Cache expires after 30 days
+            openai_client=self.openai_client
+        )
+        logger.info("Semantic cache initialized")
+
         # Load professional context
         self.context = self._load_context()
 
@@ -777,13 +800,30 @@ class CareerChatbot:
         logger.info(f"CareerChatbot initialized for {config.name}")
 
     def _load_context(self) -> Dict[str, str]:
-        """Load all professional context documents"""
+        """Load all professional context documents including blog articles"""
         context = {
             "resume": self.document_loader.load_pdf(self.config.resume_path),
             "linkedin": self.document_loader.load_pdf(self.config.linkedin_path),
-            "summary": self.document_loader.load_text(self.config.summary_path)
+            "summary": self.document_loader.load_text(self.config.summary_path),
+            "career_qa": self.document_loader.load_text(self.config.career_qa_path),
+            "blog": self.blog_manager.get_articles_as_context(max_articles=None)  # Include ALL articles
         }
+        logger.info(f"Context loaded with {len(self.blog_manager.get_all_articles())} blog articles")
         return context
+
+    def get_context_hash(self) -> str:
+        """Generate hash of current context for cache invalidation"""
+        import hashlib
+
+        # Combine all context including blog
+        context_str = (
+            self.context.get("resume", "") +
+            self.context.get("linkedin", "") +
+            self.context.get("summary", "") +
+            self.context.get("career_qa", "") +
+            self.blog_manager.get_context_hash()  # Blog content hash
+        )
+        return hashlib.md5(context_str.encode()).hexdigest()
 
     def _create_system_prompt(self) -> str:
         """Create the system prompt for the AI assistant"""
@@ -802,12 +842,32 @@ class CareerChatbot:
           'github_tools': github_tools  # Access as {github_tools} (for conditional content)
         }
         chat_init_prompt = render('prompts/chat_init.md', vars)
+
+        # DEBUG: Log if blog content is in the prompt
+        blog_in_prompt = 'ChatGPT' in chat_init_prompt
+        logger.info(f"System prompt created - Blog in prompt: {blog_in_prompt}, Length: {len(chat_init_prompt):,} chars")
+        if blog_in_prompt:
+            logger.info(f"  ✅ ChatGPT article found in system prompt")
+        else:
+            logger.warning(f"  ❌ ChatGPT article NOT in system prompt!")
+            logger.warning(f"  Blog context length: {len(self.context.get('blog', '')):,} chars")
+
         return chat_init_prompt
 
 
     def chat(self, message: str, history: List[Dict[str, str]], max_retries: int = 3) -> str:
         """Main chat function that processes user messages with evaluation and Lab 3 retry approach"""
         logger.info(f"🔄 PROCESSING message: '{message[:50]}...'")
+
+        # Get context hash for cache validation
+        context_hash = self.get_context_hash()
+
+        # Check semantic cache first
+        cached_result = self.semantic_cache.get_cached_response(message, context_hash)
+        if cached_result:
+            cached_response, similarity = cached_result
+            logger.info(f"✅ Returning cached response (similarity: {similarity:.4f})")
+            return cached_response
 
         # Generate initial response with tools
         messages = [{"role": "system", "content": self.system_prompt}] + history + [{"role": "user", "content": message}]
@@ -834,7 +894,11 @@ class CareerChatbot:
                     for notification in pending_notifications:
                         self.tool_registry.notification_service.send(notification)
 
-                    return structured_reply.response if structured_reply else "I apologize, but I'm experiencing technical difficulties."
+                    # Cache the successful response
+                    final_response = structured_reply.response if structured_reply else "I apologize, but I'm experiencing technical difficulties."
+                    self.semantic_cache.cache_response(message, final_response, context_hash)
+
+                    return final_response
                 else:
                     logger.warning(f"❌ FAILED evaluation on attempt {attempt + 1}/{max_retries}: {evaluation.feedback[:100]}...\n")
 
@@ -863,8 +927,12 @@ class CareerChatbot:
         """Generate response handling tool calls and collect pending notifications"""
         done = False
         all_pending_notifications = []
+        max_tool_iterations = 5  # Prevent infinite tool loops
 
-        while not done:
+        iteration = 0
+        while not done and iteration < max_tool_iterations:
+            iteration += 1
+
             try:
                 # Call the LLM with tools and structured output
                 response = self.openai_client.beta.chat.completions.parse(
@@ -883,6 +951,18 @@ class CareerChatbot:
                 if finish_reason == "tool_calls":
                     message_obj = response.choices[0].message
                     tool_calls = message_obj.tool_calls
+
+                    # Safety check: If we're on the last iteration, warn and break
+                    if iteration >= max_tool_iterations:
+                        logger.warning(f"⚠️ Reached max tool iterations ({max_tool_iterations}). Stopping tool calls.")
+                        # Force a final response without tools
+                        final_response = self.openai_client.beta.chat.completions.parse(
+                            model=self.config.model,
+                            messages=messages + [{"role": "assistant", "content": "I apologize, I'm having trouble processing that request. Let me answer based on what I know."}],
+                            response_format=StructuredResponse
+                        )
+                        return final_response.choices[0].message.parsed, all_pending_notifications
+
                     results, pending_notifications = self.tool_registry.handle_tool_calls(tool_calls)
                     all_pending_notifications.extend(pending_notifications)
                     messages.append(message_obj)
